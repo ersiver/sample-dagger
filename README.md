@@ -99,6 +99,7 @@ For Fragments, override <b>onAttach()</b> and inject Components after calling su
 + In order for the Dagger graph to know about this module, you have to add it to the @Component interface
 
 ### 2.8. Scoping a type to the component's lifecycle 
++ A component interface exposes methods to get instances of the types it provides. Those methods can always return a different instance or the same instance. <b>If the method always provides the same instance, we say that the type is scoped to the component.</b>
 + Scoping a type is a way to <b>reuse</b> the same instance of the object rather than creating a new instance every time it needs to be provided. It’s convenient when the object is very expensive to create (e.g. JSON parser) or when we need to share the same instance among  multiple activities that have this type as dependency.
 + To reuse the unique instance of dependency in a container we need to use <b>scope annotation</b> of the same name inside the component interface and the class object under the scope. In that way we inform Dagger that classes annotated with this annotation are bound to the life of the graph. 
 
